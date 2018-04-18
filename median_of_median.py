@@ -1,9 +1,9 @@
-def sort5(a):
+def sort5(A):
     
-    if len(a) < 2: return a
-    pequeno = sort5([x for x in a[1:] if x <= a[0]]) 
-    grande = sort5([x for x in a[1:] if x > a[0]]) 
-    return sum([pequeno, [a[0]], grande], [])
+    if len(A) < 2: return A
+    pequeno = sort5([x for x in A[1:] if x <= A[0]]) 
+    grande = sort5([x for x in A[1:] if x > A[0]]) 
+    return sum([pequeno, [A[0]], grande], [])
 
 def median_of_medians(A, k):
     
