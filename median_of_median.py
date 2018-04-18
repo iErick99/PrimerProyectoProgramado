@@ -1,3 +1,5 @@
+class median_of_medians:
+
 def sort5(A):
     
     if len(A) < 2: return A
