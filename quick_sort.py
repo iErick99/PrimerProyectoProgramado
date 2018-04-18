@@ -1,3 +1,5 @@
+class quick_sort:
+
 def quick_sort(A):
 	quick_sort2(A, 0, len(A)-1)
 	
