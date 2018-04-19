@@ -1,3 +1,6 @@
+import random 
+import time
+
 class Algoritmos:
 
     def ordenar(self, A, primero, ultimo):
@@ -23,12 +26,16 @@ class Algoritmos:
 	    self.quick_sort2(A, 0, len(A)-1)
 
     def pivot_medio(self, A, menor, mayor):
-	    medio = (mayor + menor) // 2
-	    pivot = medio
-	    return pivot
+        medio = (mayor + menor) // 2
+        pivot = medio
+        return pivot
+
+    def pivot_random(self, A, menor, mayor):
+        pivot = pivot=random.randint(menor,mayor)
+        return pivot
 	
     def particion(self, A, menor, mayor):
-	    indiceDelPivot = self.pivot_medio(A, menor, mayor)
+	    indiceDelPivot = self.pivot_random(A, menor, mayor)
 	    valorDelPivot = A[indiceDelPivot]
 	    A[indiceDelPivot], A[menor] = A[menor], A[indiceDelPivot]
 	    borde = menor
