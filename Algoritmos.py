@@ -1,4 +1,3 @@
-
 class Algoritmos:
 
     def ordenar(self, A, primero, ultimo):
@@ -12,6 +11,8 @@ class Algoritmos:
 
     def quick_sort2(self, A, menor, mayor):
         if (mayor - menor < mayor) and (menor < mayor): 
+            self.ordenar(A, menor, mayor)
+        if (mayor-menor < mayor) and (menor < mayor): 
             self.ordenar(A, menor, mayor)
         elif menor < mayor:
             p = self.particion(A, menor, mayor)
@@ -63,3 +64,12 @@ class Algoritmos:
         elif len(SL) < k:
             return self.median_of_medians(SR, k-len(SL)-1)
         return pivot
+
+
+A = [2,4,5,1,2]
+
+A2 = Algoritmos()
+
+A2.quick_sort(A)
+
+print(A)
