@@ -7,7 +7,7 @@ class Algoritmos:
                 if A[j] < A[indiceMenor]:
                     indiceMenor = j
             if indiceMenor != i:
-                A[i], A[indiceM] = A[indiceMenor], A[i]
+                A[i], A[indiceMenor] = A[indiceMenor], A[i]
 
     def quick_sort2(self, A, menor, mayor):
         if (mayor - menor < mayor) and (menor < mayor): 
