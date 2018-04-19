@@ -2,6 +2,7 @@ import random
 import time
 
 opcion = 0
+opcion2 = 0
 
 class Algoritmos:
 
@@ -61,10 +62,14 @@ class Algoritmos:
         return sum([pequeno, [A[0]], grande], [])
 
     def median_of_medians(self, A, k):
-    
-        sublists = [self.sort5(A[j:j+5]) for j in range(0, len(A), 5)]
-        medians = [sublist[len(sublist) // 2] for sublist in sublists]
-        medians = self.sort5(medians)
+        if(opcion2 == 1):
+            sublists = [self.sort5(A[j:j+5]) for j in range(0, len(A), 5)]
+            medians = [sublist[len(sublist) // 2] for sublist in sublists]
+            medians = self.sort5(medians)
+        if(opcion2 == 2):
+            sublists = [sorted(A[j:j+5]) for j in range(0, len(A), 5)]
+            medians = [sublist[len(sublist) // 2] for sublist in sublists]
+            medians = sorted(medians)
     
         pivot = medians[len(medians) // 2]
     
@@ -83,7 +88,12 @@ A = [2,4,5,1,2]
 A2 = Algoritmos()
 
 opcion = 1
+opcion2 = 2
 
 A2.quick_sort(A)
 
 print(A)
+
+B = [1,2,3,4,5,6]
+
+print(A2.median_of_medians(B, len(B)//2))
