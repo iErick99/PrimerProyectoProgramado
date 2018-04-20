@@ -114,6 +114,6 @@ class Algoritmos:
         return pivot
 
 
-A = [3, 1, 5, 1, 99]
+A = [3, 1, 5, 1, 98]
 
 print(timeit.timeit("Algoritmos().sort5(A)", number = 100_000, globals = globals()))
