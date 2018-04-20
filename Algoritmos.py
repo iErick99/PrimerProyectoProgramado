@@ -1,5 +1,6 @@
 import random 
 import time
+import timeit
 
 opcion = 0
 opcion2 = 0
@@ -54,7 +55,7 @@ class Algoritmos:
 
         return borde
 			
-    def sort5(A):
+    def sort5(self, A):
 
         if A[0] > A[1]:
             A[0], A[1] = A[1], A[0]
@@ -85,14 +86,21 @@ class Algoritmos:
             A[0], A[1], A[2], A[3], A[4] = A[4], A[0], A[1], A[2], A[3]
 
     def median_of_medians(self, A, k):
-        if(opcion2 == 1):
-            sublists = [self.sort5(A[j:j+5]) for j in range(0, len(A), 5)]
-            medians = [sublist[len(sublist) // 2] for sublist in sublists]
-            medians = self.sort5(medians)
-        if(opcion2 == 2):
-            sublists = [sorted(A[j:j+5]) for j in range(0, len(A), 5)]
-            medians = [sublist[len(sublist) // 2] for sublist in sublists]
+
+        sublists = [(A[j:j+5]) for j in range(0, len(A), 5)]
+        
+        for i in range(len(sublists)):
+            if len(sublists[i]) != 5:
+                sublists[i] = sorted(sublists[i])
+            else:
+                self.sort5(sublists[i])
+        
+        medians = [sublist[len(sublist) // 2] for sublist in sublists]
+            
+        if len(medians) != 5:
             medians = sorted(medians)
+        else:
+            self.sort5(medians)
     
         pivot = medians[len(medians) // 2]
     
@@ -106,4 +114,6 @@ class Algoritmos:
         return pivot
 
 
-#hola?
+A = [3, 1, 5, 1, 98]
+
+print(timeit.timeit("Algoritmos().sort5(A)", number = 100_000, globals = globals()))
