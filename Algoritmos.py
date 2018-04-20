@@ -56,33 +56,33 @@ class Algoritmos:
 			
     def sort5(A):
 
-    if A[0] > A[1]:
-        A[0], A[1] = A[1], A[0]
-    if A[2] > A[3]:
-        A[2], A[3] = A[3], A[2]
-    
-    if A[1] > A[3]:
-        A[1], A[3] = A[3], A[1]
-        A[1], A[2] = A[2], A[1]
-        if A[1] < A[0]:
-            A[1], A[0] = A[0], A[1]
-        if A[1] > A[2]:
+        if A[0] > A[1]:
+            A[0], A[1] = A[1], A[0]
+        if A[2] > A[3]:
+            A[2], A[3] = A[3], A[2]
+        
+        if A[1] > A[3]:
+            A[1], A[3] = A[3], A[1]
             A[1], A[2] = A[2], A[1]
-    elif A[0] > A[2]:
-        A[1], A[2], A[0] = A[0], A[1], A[2]
-    elif A[1] > A[2]:
-         A[1], A[2] = A[2], A[1]
-    
-    if A[4] > A[3]:   
-        pass
-    elif A[4] > A[2]:
-        A[3], A[4] = A[4], A[3]
-    elif A[4] > A[1]:
-        A[2], A[3], A[4] = A[4], A[2], A[3]
-    elif A[4] > A[0]:
-        A[1], A[2], A[3], A[4] = A[4], A[1], A[2], A[3]
-    else:
-        A[0], A[1], A[2], A[3], A[4] = A[4], A[0], A[1], A[2], A[3]
+            if A[1] < A[0]:
+                A[1], A[0] = A[0], A[1]
+            if A[1] > A[2]:
+                A[1], A[2] = A[2], A[1]
+        elif A[0] > A[2]:
+            A[1], A[2], A[0] = A[0], A[1], A[2]
+        elif A[1] > A[2]:
+             A[1], A[2] = A[2], A[1]
+        
+        if A[4] > A[3]:   
+            pass
+        elif A[4] > A[2]:
+            A[3], A[4] = A[4], A[3]
+        elif A[4] > A[1]:
+            A[2], A[3], A[4] = A[4], A[2], A[3]
+        elif A[4] > A[0]:
+            A[1], A[2], A[3], A[4] = A[4], A[1], A[2], A[3]
+        else:
+            A[0], A[1], A[2], A[3], A[4] = A[4], A[0], A[1], A[2], A[3]
 
     def median_of_medians(self, A, k):
         if(opcion2 == 1):
@@ -106,17 +106,4 @@ class Algoritmos:
         return pivot
 
 
-A = [2,4,5,1,2]
-
-A2 = Algoritmos()
-
-opcion = 1
-opcion2 = 2
-
-A2.quick_sort(A)
-
-print(A)
-
-B = [1,2,3,4,5,6]
-
-print(A2.median_of_medians(B, len(B)//2))
+#hola?
