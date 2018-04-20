@@ -54,12 +54,35 @@ class Algoritmos:
 
         return borde
 			
-    def sort5(self, A):
+    def sort5(A):
+
+    if A[0] > A[1]:
+        A[0], A[1] = A[1], A[0]
+    if A[2] > A[3]:
+        A[2], A[3] = A[3], A[2]
     
-        if len(A) < 2: return A
-        pequeno = self.sort5([x for x in A[1:] if x <= A[0]]) 
-        grande = self.sort5([x for x in A[1:] if x > A[0]]) 
-        return sum([pequeno, [A[0]], grande], [])
+    if A[1] > A[3]:
+        A[1], A[3] = A[3], A[1]
+        A[1], A[2] = A[2], A[1]
+        if A[1] < A[0]:
+            A[1], A[0] = A[0], A[1]
+        if A[1] > A[2]:
+            A[1], A[2] = A[2], A[1]
+    elif A[0] > A[2]:
+        A[1], A[2], A[0] = A[0], A[1], A[2]
+    elif A[1] > A[2]:
+         A[1], A[2] = A[2], A[1]
+    
+    if A[4] > A[3]:   
+        pass
+    elif A[4] > A[2]:
+        A[3], A[4] = A[4], A[3]
+    elif A[4] > A[1]:
+        A[2], A[3], A[4] = A[4], A[2], A[3]
+    elif A[4] > A[0]:
+        A[1], A[2], A[3], A[4] = A[4], A[1], A[2], A[3]
+    else:
+        A[0], A[1], A[2], A[3], A[4] = A[4], A[0], A[1], A[2], A[3]
 
     def median_of_medians(self, A, k):
         if(opcion2 == 1):
