@@ -6,52 +6,51 @@ opcion = 1
 
 class Algoritmos:
 
-    def ordenar(self, A, primero, ultimo):
-        for i in range (primero, ultimo):
-            indiceMenor = i
-            for j in range (i+1, ultimo+1):
-                if A[j] < A[indiceMenor]:
-                    indiceMenor = j
-            if indiceMenor != i:
-                A[i], A[indiceMenor] = A[indiceMenor], A[i]
+    def __init__(self, listaA ):
+        self.A = listaA
+    
+    def printA(self):
+        if self.A != None:
+            print(self.A)
 
-    def quick_sort2(self, A, menor, mayor):
+    def quick_sort2(self, menor, mayor):
         if menor < mayor:
-            p = self.particion(A, menor, mayor)
-            self.quick_sort2(A, menor, p - 1)
-            self.quick_sort2(A, p + 1, mayor)
+            p = self.particion(menor, mayor)
+            self.quick_sort2(menor, p - 1)
+            self.quick_sort2(p + 1, mayor)
 
-    def quick_sort(self, A):
-	    self.quick_sort2(A, 0, len(A)-1)
+    def quick_sort(self):
+	    self.quick_sort2(0, len(self.A)-1)
 
-    def pivot_medio(self, A, menor, mayor):
+    def pivot_medio(self, menor, mayor):
         medio = (mayor + menor) // 2
         pivot = medio
         return pivot
 
-    def pivot_random(self, A, menor, mayor):
+    def pivot_random(self, menor, mayor):
         pivot = pivot=random.randint(menor,mayor)
         return pivot
 	
-    def particion(self, A, menor, mayor):
+    def particion(self, menor, mayor):
         if opcion == 1:
-	        indiceDelPivot = self.pivot_medio(A, menor, mayor)
+	        indiceDelPivot = self.pivot_medio(menor, mayor)
         if opcion == 2:
-            indiceDelPivot = self.pivot_random(A, menor, mayor)
-        valorDelPivot = A[indiceDelPivot]
-        A[indiceDelPivot], A[menor] = A[menor], A[indiceDelPivot]
+            indiceDelPivot = self.pivot_random(menor, mayor)
+        valorDelPivot = self.A[indiceDelPivot]
+        self.A[indiceDelPivot], self.A[menor] = self.A[menor], self.A[indiceDelPivot]
         borde = menor
 
         for i in range(menor, mayor + 1):
-            if A[i] < valorDelPivot:
+            if self.A[i] < valorDelPivot:
                 borde += 1
-                A[i], A[borde] = A[borde], A[i]
-        A[menor], A[borde] = A[borde], A[menor]
+                self.A[i], self.A[borde] = self.A[borde], self.A[i]
+        self.A[menor], self.A[borde] = self.A[borde], self.A[menor]
 
         return borde
 			
     def sort5(self, A):
         A0, A1, A2, A3, A4 = A[0], A[1], A[2], A[3], A[4]
+
         if A0 > A1:
             A0, A1 = A1, A0
         if A2 > A3:
@@ -79,6 +78,7 @@ class Algoritmos:
             A1, A2, A3, A4 = A4, A1, A2, A3
         else:
             A0, A1, A2, A3, A4 = A4, A0, A1, A2, A3
+        A[0], A[1], A[2], A[3], A[4] = A0, A1, A2, A3, A4
 
     def median_of_medians(self, A, k):
 
@@ -107,3 +107,33 @@ class Algoritmos:
         elif len(SL) < k:
             return self.median_of_medians(SR, k-len(SL)-1)
         return pivot
+
+#Algoritmos para probar el tiempo del quick_sort
+
+import csv
+
+a = None
+
+def timing_algoritmos(start, stop, step):
+    global a
+    results = []
+    population = list(range(0, stop))
+    for n in range(start, stop, step):
+        size = start + n
+        a = random.sample(population, size)
+        print("Size={}".format(size))
+        tn = timeit.timeit("Algoritmos(a).quick_sort()", number=10, globals=globals())
+        results.append((size, tn))
+    return results
+
+def algoritmos_time_save(filename="data/QuickSort3.csv", start=10, stop=1000, step=100):
+    results = timing_algoritmos(start, stop, step)
+    with open(filename, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=';',quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        writer.writerow(['i', 'n', 'time(n)'])
+        for i, (n, tn) in enumerate(results):
+            writer.writerow([i, n, tn])
+            
+
+algoritmos_time_save()
+
