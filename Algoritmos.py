@@ -51,34 +51,34 @@ class Algoritmos:
         return borde
 			
     def sort5(self, A):
-
-        if A[0] > A[1]:
-            A[0], A[1] = A[1], A[0]
-        if A[2] > A[3]:
-            A[2], A[3] = A[3], A[2]
+        A0, A1, A2, A3, A4 = A[0], A[1], A[2], A[3], A[4]
+        if A0 > A1:
+            A0, A1 = A1, A0
+        if A2 > A3:
+            A2, A3 = A3, A2
         
-        if A[1] > A[3]:
-            A[1], A[3] = A[3], A[1]
-            A[1], A[2] = A[2], A[1]
-            if A[1] < A[0]:
-                A[1], A[0] = A[0], A[1]
-            if A[1] > A[2]:
-                A[1], A[2] = A[2], A[1]
-        elif A[0] > A[2]:
-            A[1], A[2], A[0] = A[0], A[1], A[2]
-        elif A[1] > A[2]:
-             A[1], A[2] = A[2], A[1]
+        if A1 > A3:
+            A1, A3 = A3, A1
+            A1, A2 = A2, A1
+            if A1 < A0:
+                A1, A0 = A0, A1
+            if A1 > A2:
+                A1, A2 = A2, A1
+        elif A0 > A2:
+            A1, A2, A0 = A0, A1, A2
+        elif A1 > A2:
+             A1, A2 = A2, A1
         
-        if A[4] > A[3]:   
+        if A4 > A3:   
             pass
-        elif A[4] > A[2]:
-            A[3], A[4] = A[4], A[3]
-        elif A[4] > A[1]:
-            A[2], A[3], A[4] = A[4], A[2], A[3]
-        elif A[4] > A[0]:
-            A[1], A[2], A[3], A[4] = A[4], A[1], A[2], A[3]
+        elif A4 > A2:
+            A3, A4 = A4, A3
+        elif A4 > A1:
+            A2, A3, A4 = A4, A2, A3
+        elif A4 > A0:
+            A1, A2, A3, A4 = A4, A1, A2, A3
         else:
-            A[0], A[1], A[2], A[3], A[4] = A[4], A[0], A[1], A[2], A[3]
+            A0, A1, A2, A3, A4 = A4, A0, A1, A2, A3
 
     def median_of_medians(self, A, k):
 
