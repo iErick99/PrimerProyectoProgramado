@@ -2,8 +2,7 @@ import random
 import time
 import timeit
 
-opcion = 0
-opcion2 = 0
+opcion = 1
 
 class Algoritmos:
 
@@ -17,11 +16,7 @@ class Algoritmos:
                 A[i], A[indiceMenor] = A[indiceMenor], A[i]
 
     def quick_sort2(self, A, menor, mayor):
-        if (mayor - menor < mayor) and (menor < mayor): 
-            self.ordenar(A, menor, mayor)
-        if (mayor-menor < mayor) and (menor < mayor): 
-            self.ordenar(A, menor, mayor)
-        elif menor < mayor:
+        if menor < mayor:
             p = self.particion(A, menor, mayor)
             self.quick_sort2(A, menor, p - 1)
             self.quick_sort2(A, p + 1, mayor)
@@ -112,8 +107,3 @@ class Algoritmos:
         elif len(SL) < k:
             return self.median_of_medians(SR, k-len(SL)-1)
         return pivot
-
-
-A = [3, 1, 5, 1, 98]
-
-print(timeit.timeit("Algoritmos().sort5(A)", number = 100_000, globals = globals()))
